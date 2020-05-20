@@ -1,0 +1,16 @@
+my:
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        a, b = 1, 0
+        for i in str(n):
+            a *= int(i)
+            b += int(i)
+        return a - b
+        
+better:
+        sum, multi = 0, 1
+        while n!= 0:
+            sum += n%10
+            multi *= n%10
+            n //= 10
+        return multi -sum
