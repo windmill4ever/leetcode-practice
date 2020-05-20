@@ -1,0 +1,15 @@
+my:
+class Solution:
+    def minCount(self, coins: List[int]) -> int:
+        a = 0
+        for i in coins:
+            if (i%2)==1:
+                a += (i//2 + 1)
+            else:
+                a += i//2
+        return a
+        
+        #这里我傻了，不需要if else
+        
+others:
+        return sum((c + 1) // 2 for c in coins)
