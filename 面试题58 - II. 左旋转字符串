@@ -1,0 +1,15 @@
+my answer: 
+class Solution:
+    def reverseLeftWords(self, s: str, n: int) -> str:
+        if s == []:
+            return []
+        return s[n:] + s[:n]
+        
+        #注意！空字符串切片不报错，但空字串取位会报错。
+        >n = ''
+        >print(n[:])
+        ->''
+        
+        >n = ''
+        >print(n[0])
+        ->IndexError: string index out of range
