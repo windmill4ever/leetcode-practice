@@ -1,0 +1,41 @@
+#这道题感觉受到鄙视
+my:236 ms	13.8 MB
+
+def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+    a = []
+    b = 0
+    for i in nums:
+        for j in nums:
+            if i > j:
+                b += 1
+        a.append(b)
+        b = 0
+    return a
+
+
+
+others 1:
+        dic=[0]*101
+        n=len(nums)
+        vec=[0]*n
+        for key in nums:
+            dic[key]=dic[key]+1
+        for i in range(1,101):
+            dic[i]=dic[i-1]+dic[i]
+        for k in range(len(nums)):
+            if nums[k]:
+                vec[k]=dic[nums[k]-1] 
+        return vec
+        
+other 2:
+        a = sorted(nums)
+        dic = {}
+        for i in range(len(a)):
+            if a[i] not in dic:
+                dic[a[i]] = i
+        ans = []
+        for n in nums:
+            ans.append(dic[n])
+        return ans
+        
+#不太明白。先放着
