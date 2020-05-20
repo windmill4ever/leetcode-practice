@@ -1,0 +1,32 @@
+my:
+class Solution:
+    def defangIPaddr(self, address: str) -> str:
+        add = list(address)
+        i = 0
+        b = ''
+        while i < len(address):
+            if add[i] == '.':
+                add[i] = '[.]'
+            i += 1
+        for j in add:
+            b += str(j)
+        return b
+        #用时44 ms	13.8 MB	#估计是刚吃饱了撑的#先转list、换元素、再str合并#太繁琐了
+
+better 1:
+        res = ''
+        for i in address:
+            if i == '.':
+                res = res + '[.]'
+            else:
+                res = res + i
+        return res
+
+bette 2\3\4:
+        #2 return address.replace('.', '[.]')
+        #直接用replace函数，用时和内存也不小
+        #3 return re.sub('\.', '[.]', address)
+        #正则表达式？
+        list = address.split('.')
+        return '[.]'.join(list)
+        #第四种我的方法差不多，但是简洁很多
