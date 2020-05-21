@@ -1,0 +1,21 @@
+my:
+class Solution:
+    def isFlipedString(self, s1: str, s2: str) -> bool:
+        if len(s1) != len(s2):
+            return False
+        if s1 == '':
+            return True
+        a = ''
+        for i in range(len(s2)):
+            if s2[i] == s1[0]:
+                a = s2[i:] + s2[:i]
+                if a == s1:
+                    return True
+        return False
+        
+better:
+        return len(s1)==len(s2) and s1 in s2+s2
+        
+        
+        #没什么好说的，自己的方法比较麻烦，要考虑特殊情况，s1s2为''时
+        #如果调用s1[0]，会报错string index out of range
