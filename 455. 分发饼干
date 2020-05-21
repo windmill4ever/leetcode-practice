@@ -1,0 +1,15 @@
+my:728 ms	15.4 MB
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        a = 0
+        g.sort()
+        s.sort()
+        for j in s:
+            for i in g:
+                if j >= i:
+                    a += 1
+                    g.remove(i)
+                    break
+        return a
+        
+        #本题存疑，我看别人也都是sort以后两次遍历，但时间比我快
