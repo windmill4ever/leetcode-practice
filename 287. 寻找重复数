@@ -1,0 +1,32 @@
+my:	92 ms	16.1 MB
+    def findDuplicate(self, nums: List[int]) -> int:
+        nums.sort()
+        for i in range(len(nums)):
+            if nums[i] != nums[i+1]:
+                i += 1
+            else:
+                return nums[i]
+                #时间复杂度O(nlogn+n)
+                #所耗内存比下面两种少
+                
+better:
+        hash_map = {}
+        for i in range(0,len(nums)+1):
+            hash_map[i] = 0
+        for n in nums:
+            hash_map[n] += 1
+        for i in range(0,len(nums)+1):
+            if hash_map[i] > 1:
+                return i
+        return None
+        
+        
+        #2:
+        numFreq = collections.Counter(nums)
+        for num, freq in numFreq.items():
+            if freq > 1:
+                return num
+
+
+#关于时间复杂度和空间复杂度：
+#https://www.cnblogs.com/palace/p/9598309.html
