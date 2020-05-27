@@ -1,0 +1,17 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        x2str = str(bin(x))[2:]
+        y2str = str(bin(y))[2:]
+        if len(x2str) > len(y2str):
+            y2str = '0' * (len(x2str) - len(y2str)) + y2str
+        else:
+            x2str = '0' * (len(y2str) - len(x2str)) + x2str
+        n = 0
+        for i in range(len(y2str)):
+            if y2str[i] != x2str[i]:
+                n += 1
+        return n
+        
+better:
+        return bin(x ^ y).count('1')
+        #按位异或
