@@ -1,0 +1,24 @@
+my:
+    def destCity(self, paths: List[List[str]]) -> str:
+        p = {}
+        for i in paths:
+            if i[0] not in p:
+                p[i[0]] = [1,0]
+            else:
+                p[i[0]][0] += 1
+            if i[1] not in p:
+                p[i[1]] = [1,1]
+            else:
+                p[i[1]][0] += 1
+        for k,v in p.items():
+            if v[0] == 1 and v[1] == 1:
+                return k
+                #	28 ms	13.7 MB	
+                
+better:
+        setA = set([path[0] for path in paths])
+        setB = set([path[1] for path in paths])
+        res = setB-setA
+        return list(res)[0]
+        
+        #集合（set）是一个无序的不重复元素序列,https://www.runoob.com/python3/python3-set.html
